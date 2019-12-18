@@ -18,4 +18,4 @@ SELECT * FROM employees WHERE (first_name = 'Irena' OR first_name = 'Vidya' OR f
 
 # Find all employees with a 'q' in their last name — 1,873 rows.
 
-# SELECT * FROM employees WHERE last_name LIKE '%q%' LIMIT last_name '%qu%';
+# SELECT * FROM employees WHERE last_name LIKE '%q%' AND last_name NOT LIKE'%qu%';
