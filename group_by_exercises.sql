@@ -20,13 +20,13 @@ GROUP BY first_name, last_name;
 SELECT DISTINCT last_name
 FROM employees
 WHERE last_name LIKE '%q%'
-  AND last_name not LIKE '%qu%';
+AND last_name not LIKE '%qu%';
 
 # Add a COUNT() to your results and use ORDER BY to make it easier to find employees whose unusual name is shared with others
 SELECT last_name, COUNT(last_name)
 FROM employees
 WHERE last_name LIKE '%q%'
-  AND last_name not LIKE '%qu%'
+AND last_name not LIKE '%qu%'
 GROUP BY last_name
 ORDER BY last_name;
 
