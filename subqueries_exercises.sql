@@ -61,3 +61,39 @@ select max(salary)
 from salaries
 )
 );
+
+
+-- get current manager name of Sales department (use subqueries)
+
+SELECT concat(first_name, ' ',last_name) as Sales_Manager
+From employees
+Where emp_no In (
+    select emp_no
+    From dept_manager
+    WHERE to_date > curdate() and dept_no = (
+        select dept_no
+        From departments
+        where dept_name = 'Sales'
+        )
+    );
+
+-- get all senior engineers in customer service department
+
+SELECT * From employees Where emp_no IN (
+    SELECT emp_no FROM titles WHERE title = 'Senior Engineer'
+     And emp_no IN (select emp_no from dept_emp
+    WHERE dept_no IN (
+        select dept_no
+        From departments
+        where dept_name = 'Customer Service'
+        )
+         )
+    );
+
+-- get all first and last names of current Sales department employees
+
+select last_name from employees where emp_no in (select emp_no
+from dept_emp Where dept_no In ( select dept_no from departments where dept_name = 'Sales'));
+
+
+
